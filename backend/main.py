@@ -1,5 +1,4 @@
 
-import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -15,4 +14,4 @@ app.add_middleware(
 
 @app.get("/")
 def read_root():
-    return {"message": "ID Card API Running"}
+    return {"message": "ID Card Generator API is running"}
