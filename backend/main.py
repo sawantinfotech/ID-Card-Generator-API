@@ -1,14 +1,12 @@
 from fastapi import FastAPI
 from backend import auth, generate_id
-from backend.database import Base, engine
+from backend.database import Base, engine, DB_TYPE
 from fastapi.middleware.cors import CORSMiddleware
 
-# Initialize DB
 Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
 
-# CORS for React frontend
+# CORS middleware
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,10 +15,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Routes
+# Include routers
 app.include_router(auth.router)
 app.include_router(generate_id.router)
 
 @app.get("/")
 def root():
     return {"message": "ID Card Generator API is running."}
+
+@app.get("/db-status")
+def db_status():
+    return {"database_in_use": DB_TYPE}

@@ -17,7 +17,7 @@ class UserResponse(BaseModel):
     api_secret: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class IDCardRequest(BaseModel):
     name: str
@@ -30,4 +30,4 @@ class IDCardResponse(BaseModel):
     timestamp: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True

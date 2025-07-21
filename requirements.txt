@@ -7,3 +7,5 @@ passlib[bcrypt]
 python-jose
 Pillow
 reportlab
+email-validator
+psycopg2-binary
